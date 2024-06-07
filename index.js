@@ -15,9 +15,11 @@ app.get('/', (req, res) => {
     res.send("Node Server")
 });
 
+const mongoUri = process.env.MONGODB_URI;
+
 // MongoDB Connection
 mongoose.connect(
-    process.env.MONGODB_URI
+    mongoUri
 ).then(
     () => {
         console.log("Connected to the database");

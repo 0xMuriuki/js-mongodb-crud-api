@@ -3,6 +3,9 @@ const { default: mongoose } = require('mongoose');
 const app = express();
 const productRoute = require('./routes/product.routes.js');
 
+require('dotenv').config();
+// console.log(process.env)
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -14,7 +17,7 @@ app.get('/', (req, res) => {
 
 // MongoDB Connection
 mongoose.connect(
-    "mongodb+srv://<USERNAME>:<PASSWORD>@cluster0.zvfsill.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    process.env.MONGODB_URI
 ).then(
     () => {
         console.log("Connected to the database");
